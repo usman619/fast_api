@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 # 'postgresql://<username>:<password>@<ip.address/hostname>/<database_name>'
 
-SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:password123@localhost/fastapi'
+SQLALCHEMY_DATABASE_URL = 'postgresql://postgres:hello999@localhost/fastapi'
 
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
@@ -12,6 +12,7 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
+# Open and close db on demand
 def get_db():
     db = SessionLocal()
     try:
