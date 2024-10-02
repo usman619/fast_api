@@ -8,7 +8,7 @@ from sqlalchemy.orm import Session
 # local imports
 from app import models, schemas
 from app.database import Base, engine, get_db
-from app.routers import post,user
+from app.routers import post,user, auth
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -34,6 +34,7 @@ while True:
 
 app.include_router(post.router)
 app.include_router(user.router)
+app.include_router(auth.router)
 
 # Root
 @app.get("/")
