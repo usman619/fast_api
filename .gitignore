@@ -1,2 +1,6 @@
+# Py-cache
 app/__pycache__/
 app/routers/__pycache__
+
+# Environmental Variables
+.env
