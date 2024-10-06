@@ -1,5 +1,7 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
+from typing_extensions import Annotated
+# from pydantic.types import conint
 from datetime import datetime
 
 # Structure of the Request
@@ -46,3 +48,13 @@ class Post(PostBase):
     class Config:
         from_attributes = True # called orm_mode previously
 
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
+
+    class Config:
+        from_attributes = True
+
+class Vote(BaseModel):
+    post_id: int
+    vote_dir: Annotated[int, Field(strict=True, ge=0, le=1)]
