@@ -5,3 +5,5 @@ alembic/versions/__pycache__
 alembic/__pycache__
 # Environmental Variables
 .env
+# CORS Policy Test HTML
+api_test.html
