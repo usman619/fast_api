@@ -8,7 +8,7 @@ class Post(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     title = Column(String, nullable=False)
     content = Column(String, nullable=False)
-    published = Column(Boolean, server_default='True', nullable=False )
+    published = Column(Boolean, server_default='True', nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('NOW()'))
     owner_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), nullable=False)
@@ -21,11 +21,9 @@ class User(Base):
     password = Column(String, nullable=False)
     created_at = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('NOW()'))
-    # phone_number = Column(String)
+    phone_number = Column(String)
     
 class Vote(Base):
     __tablename__= "votes"
-    post_id = Column(Integer, ForeignKey("posts.id", ondelete=CASCADE), primary_key=
-                     True)
-    user_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), primary_key=
-                     True)
+    post_id = Column(Integer, ForeignKey("posts.id", ondelete=CASCADE), primary_key=True)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete=CASCADE), primary_key=True)
